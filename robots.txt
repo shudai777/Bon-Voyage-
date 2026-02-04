@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shudai777.github.io/Bon-Voyage-/sitemap.xml
