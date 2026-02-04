@@ -73,32 +73,58 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ===========================
-// フォーム送信処理
+// フォーム送信処理（Formspree対応）
 // ===========================
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // フォームデータを取得
-        const formData = new FormData(contactForm);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
+        // 送信ボタンを無効化
+        const submitButton = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitButton.textContent;
+        submitButton.textContent = '送信中...';
+        submitButton.disabled = true;
         
-        // 実際の実装では、ここでサーバーにデータを送信します
-        // 例: fetch('/api/contact', { method: 'POST', body: JSON.stringify(data) })
+        // FormspreeのURLが設定されているか確認
+        const formAction = contactForm.getAttribute('action');
         
-        // デモ用: コンソールに出力
-        console.log('フォームデータ:', data);
+        if (!formAction || formAction.includes('YOUR_FORM_ID')) {
+            // Formspreeが未設定の場合はデモモード
+            console.log('フォームデータ（デモモード）:', Object.fromEntries(new FormData(contactForm)));
+            showNotification('⚠️ フォームは未設定です。Formspree IDを設定してください。', 'warning');
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+            return;
+        }
         
-        // 送信成功メッセージを表示
-        showNotification('お問い合わせを受け付けました。1営業日以内にご連絡いたします。', 'success');
-        
-        // フォームをリセット
-        contactForm.reset();
+        try {
+            // Formspreeにデータを送信
+            const response = await fetch(formAction, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+            
+            if (response.ok) {
+                // 送信成功
+                showNotification('お問い合わせを受け付けました。1営業日以内にご連絡いたします。', 'success');
+                contactForm.reset();
+            } else {
+                // エラー
+                throw new Error('送信に失敗しました');
+            }
+        } catch (error) {
+            showNotification('送信に失敗しました。直接メールでご連絡ください。', 'error');
+            console.error('フォーム送信エラー:', error);
+        } finally {
+            // ボタンを元に戻す
+            submitButton.textContent = originalText;
+            submitButton.disabled = false;
+        }
     });
 }
 
@@ -117,12 +143,19 @@ function showNotification(message, type = 'success') {
     notification.className = `notification notification-${type}`;
     notification.textContent = message;
     
+    // タイプに応じた背景色
+    const colors = {
+        'success': '#10b981',
+        'error': '#ef4444',
+        'warning': '#f59e0b'
+    };
+    
     // スタイルを設定
     notification.style.cssText = `
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        background: ${colors[type] || colors.success};
         color: white;
         padding: 1.5rem 2rem;
         border-radius: 10px;
@@ -135,13 +168,13 @@ function showNotification(message, type = 'success') {
     
     document.body.appendChild(notification);
     
-    // 3秒後に自動的に削除
+    // 5秒後に自動的に削除
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => {
             notification.remove();
         }, 300);
-    }, 3000);
+    }, 5000);
 }
 
 // 通知のアニメーション用CSS（動的に追加）
