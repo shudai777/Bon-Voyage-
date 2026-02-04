@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Generator - Bon Voyage</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 3px solid white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 30px;
+        }
+        button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        .info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚁 Bon Voyage ファビコン生成</h1>
+        <canvas id="favicon" width="512" height="512"></canvas>
+        <div class="buttons">
+            <button onclick="downloadFavicon()">📥 ダウンロード (favicon.ico用)</button>
+            <button onclick="downloadPNG()">📥 ダウンロード (PNG用)</button>
+        </div>
+        <div class="info">
+            <p><strong>📌 使い方：</strong></p>
+            <ol>
+                <li>上の画像を右クリック → 「名前を付けて保存」</li>
+                <li>ファイル名: <code>favicon.png</code></li>
+                <li>GitHubリポジトリにアップロード</li>
+                <li>index.htmlのheadタグ内に追加：<br>
+                <code>&lt;link rel="icon" type="image/png" href="favicon.png"&gt;</code></li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('favicon');
+        const ctx = canvas.getContext('2d');
+
+        // 背景のグラデーション
+        const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+        gradient.addColorStop(0, '#1a73e8');
+        gradient.addColorStop(1, '#00d4ff');
+        
+        // 背景を塗りつぶし
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 512, 512);
+
+        // ドローンのシルエット（簡略化）
+        ctx.fillStyle = 'white';
+        
+        // 中央の本体
+        ctx.beginPath();
+        ctx.arc(256, 256, 80, 0, Math.PI * 2);
+        ctx.fill();
+        
+        // プロペラ4つ
+        const propellers = [
+            {x: 150, y: 150},
+            {x: 362, y: 150},
+            {x: 150, y: 362},
+            {x: 362, y: 362}
+        ];
+        
+        propellers.forEach(prop => {
+            ctx.beginPath();
+            ctx.arc(prop.x, prop.y, 40, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 中央との接続線
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.moveTo(256, 256);
+            ctx.lineTo(prop.x, prop.y);
+            ctx.stroke();
+        });
+        
+        // 中央に「BV」の文字
+        ctx.fillStyle = '#1a73e8';
+        ctx.font = 'bold 80px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('BV', 256, 256);
+
+        function downloadFavicon() {
+            const link = document.createElement('a');
+            link.download = 'favicon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        function downloadPNG() {
+            const link = document.createElement('a');
+            link.download = 'bon-voyage-icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
