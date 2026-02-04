@@ -81,13 +81,12 @@
                 <div class="service-card">
                     <div class="service-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
                         </svg>
                     </div>
-                    <h3>プロ級の編集技術</h3>
-                    <p>DaVinci Resolveを使用した高品質な編集で、施設の魅力を最大限に引き出す映像作品に仕上げます。</p>
+                    <h3>スピーディーな納品</h3>
+                    <p>撮影内容にもよりますが、3-4日で納品可能。お急ぎの案件にも柔軟に対応し、高品質な映像を迅速にお届けします。</p>
                 </div>
                 
                 <div class="service-card">
@@ -174,7 +173,7 @@
                 <p class="section-description">実際の撮影事例をご覧ください</p>
             </div>
             
-            <div class="portfolio-grid">
+            <div class="portfolio-grid portfolio-grid-4">
                 <div class="portfolio-item">
                     <div class="video-wrapper">
                         <!-- サウナPR動画 - 実際のVimeo IDに置き換えてください -->
@@ -188,8 +187,19 @@
                 
                 <div class="portfolio-item">
                     <div class="video-wrapper">
-                        <!-- 工場リクルート動画 - 実際のVimeo IDに置き換えてください -->
+                        <!-- ホテル紹介動画 - 実際のVimeo IDに置き換えてください -->
                         <iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID_2" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>ホテル紹介</h3>
+                        <p>ラグジュアリーな空間を美しく撮影</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="video-wrapper">
+                        <!-- 工場リクルート動画 - 実際のVimeo IDに置き換えてください -->
+                        <iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID_3" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="portfolio-info">
                         <h3>工場リクルート</h3>
@@ -200,7 +210,7 @@
                 <div class="portfolio-item">
                     <div class="video-wrapper">
                         <!-- オフィス来客促進動画 - 実際のVimeo IDに置き換えてください -->
-                        <iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID_3" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/YOUR_VIDEO_ID_4" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="portfolio-info">
                         <h3>オフィス来客促進</h3>
@@ -237,7 +247,7 @@
                         <li>撮影時間: 約2-3時間</li>
                         <li>編集・カラーグレーディング込み</li>
                         <li>完成動画: 1-2分</li>
-                        <li>修正: 2回まで無料</li>
+                        <li>納期: 撮影後3-4日</li>
                     </ul>
                     <a href="#contact" class="btn btn-outline">相談する</a>
                 </div>
@@ -257,7 +267,7 @@
                         <li>撮影時間: 約4-5時間</li>
                         <li>編集・カラーグレーディング込み</li>
                         <li>完成動画: 2-3分</li>
-                        <li>修正: 3回まで無料</li>
+                        <li>納期: 撮影後3-4日</li>
                         <li>BGM選定サポート</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary">相談する</a>
@@ -277,7 +287,7 @@
                         <li>撮影時間: 1日対応可能</li>
                         <li>編集・カラーグレーディング込み</li>
                         <li>完成動画: 3-5分</li>
-                        <li>修正: 無制限</li>
+                        <li>納期: 撮影後3-4日</li>
                         <li>BGM選定サポート</li>
                         <li>複数バージョン作成可能</li>
                     </ul>
@@ -288,7 +298,7 @@
             <div class="pricing-benefits">
                 <h3>特典・割引</h3>
                 <ul>
-                    <li>✓ 他案件紹介で次回10%割引</li>
+                    <li>✓ 他案件紹介で割引適用</li>
                     <li>✓ お客様の声撮影にご協力いただける場合は割引適用</li>
                     <li>✓ 複数施設の同時撮影で特別価格提供</li>
                     <li>✓ まずは無料相談で最適プランをご提案します</li>
@@ -316,9 +326,10 @@
                             <line x1="9" y1="15" x2="15" y2="15"/>
                         </svg>
                     </div>
-                    <h3>国家資格保有</h3>
-                    <p class="credential-title">一等無人航空機操縦士</p>
-                    <p class="credential-description">国土交通省認定の最高位資格を保有。室内微細操縦から屋外飛行まで、あらゆる撮影に対応できる技術力を証明します。</p>
+                    <h3>公的資格保有</h3>
+                    <p class="credential-title">第三級陸上特殊無線技士</p>
+                    <p class="credential-title">JUIDA 無人航空機安全運航管理者</p>
+                    <p class="credential-description">国家資格および認定資格を保有し、適切な運用と安全管理を徹底。室内微細操縦から屋外飛行まで、あらゆる撮影に対応できる技術力を証明します。</p>
                     <ul class="credential-features">
                         <li>高度な操縦技術</li>
                         <li>安全管理の徹底</li>
@@ -347,6 +358,22 @@
             <div class="credentials-assurance">
                 <p>商業施設オーナー様も安心してご依頼いただける、プロフェッショナルな体制を整えております。</p>
             </div>
+            
+            <div class="area-coverage">
+                <h3>対応エリア</h3>
+                <div class="area-info">
+                    <div class="area-card">
+                        <h4>🚗 関東圏</h4>
+                        <p class="area-highlight">交通費無料</p>
+                        <p>横浜市を拠点に、東京都・神奈川県・千葉県・埼玉県・茨城県・栃木県・群馬県への出張撮影は交通費無料でお伺いします。</p>
+                    </div>
+                    <div class="area-card">
+                        <h4>✈️ 全国対応</h4>
+                        <p class="area-highlight">別途交通費</p>
+                        <p>関東圏以外の全国各地への出張撮影も対応可能です。交通費は別途お見積もりいたします。お気軽にご相談ください。</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -362,7 +389,7 @@
             <div class="contact-content">
                 <div class="contact-info">
                     <h3>Bon Voyage</h3>
-                    <p class="contact-location">📍 横浜市を拠点に全国対応</p>
+                    <p class="contact-location">📍 横浜市を拠点に関東圏交通費無料・全国対応</p>
                     
                     <div class="contact-methods">
                         <div class="contact-method">
@@ -444,7 +471,7 @@
                 <div class="footer-brand">
                     <h3>Bon Voyage</h3>
                     <p>マイクロドローン室内撮影専門サービス</p>
-                    <p class="footer-location">横浜市を拠点に全国対応</p>
+                    <p class="footer-location">横浜市を拠点に関東圏交通費無料・全国対応</p>
                 </div>
                 
                 <div class="footer-links">
