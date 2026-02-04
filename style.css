@@ -656,6 +656,7 @@ section {
     align-items: flex-start;
     justify-content: center;
     margin: 1.5rem 0;
+    flex-wrap: wrap;
 }
 
 .currency {
@@ -667,6 +668,13 @@ section {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1;
+}
+
+.price-note {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-left: 0.5rem;
+    margin-top: 1.5rem;
 }
 
 .pricing-subtitle {
@@ -721,6 +729,82 @@ section {
     padding: 0.75rem 0;
     color: #64748b;
     font-size: 1.05rem;
+}
+
+/* ===========================
+   追加サービスセクション
+   =========================== */
+.additional-services {
+    margin-top: 3rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+}
+
+.additional-services h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.service-extra-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 2px solid #e2e8f0;
+    transition: var(--transition-base);
+    text-align: center;
+}
+
+.service-extra-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--primary-color);
+}
+
+.service-extra-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--secondary-color), #ff8c61);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.service-extra-icon svg {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+.service-extra-card h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.service-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.service-extra-card p:last-child {
+    color: #64748b;
+    line-height: 1.7;
 }
 
 /* ===========================
@@ -938,6 +1022,18 @@ section {
 .contact-response {
     color: var(--text-gray);
     font-size: 0.95rem;
+}
+
+/* メールリンクのスタイル */
+.email-link {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: underline;
+    transition: var(--transition-base);
+}
+
+.email-link:hover {
+    color: var(--primary-color);
 }
 
 .contact-flow {
