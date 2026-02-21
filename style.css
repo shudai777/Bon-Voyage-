@@ -1418,6 +1418,42 @@ section {
     }
 }
 
+/* note記事埋め込みセクション */
+.note-article-section {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.note-embed-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.note-embed-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+}
+
+.note-embed {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .note-embed-wrapper {
+        padding: 1rem;
+    }
+    
+    .note-embed {
+        height: 350px !important;
+    }
+}
+
 @media (max-width: 480px) {
     .hero-title {
         font-size: 1.5rem;
@@ -1425,6 +1461,14 @@ section {
     
     .logo h1 {
         font-size: 1.4rem;
+    }
+    
+    .note-embed-wrapper {
+        padding: 0.5rem;
+    }
+    
+    .note-embed {
+        height: 300px !important;
     }
     
     .btn {
