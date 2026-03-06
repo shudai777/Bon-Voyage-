@@ -1574,6 +1574,42 @@ section {
     margin-bottom: 0.5rem;
 }
 
+/* バウンダリ行政書士認証バッジ */
+.boundary-certification {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(26, 115, 232, 0.05);
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid rgba(26, 115, 232, 0.1);
+}
+
+.boundary-badge-link {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.boundary-badge-link:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+}
+
+.boundary-badge {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+.boundary-caption {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+}
+
 @media (max-width: 768px) {
     .faq-section {
         padding: 3rem 1rem;
@@ -1594,5 +1630,17 @@ section {
     
     .faq-item.active .faq-answer {
         padding: 0 1.5rem 1.25rem;
+    }
+    
+    .boundary-certification {
+        padding: 1rem;
+    }
+    
+    .boundary-badge {
+        max-width: 150px;
+    }
+    
+    .boundary-caption {
+        font-size: 0.8rem;
     }
 }
